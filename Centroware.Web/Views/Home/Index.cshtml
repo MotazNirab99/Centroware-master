@@ -1,0 +1,358 @@
+﻿@model Centroware.Model.ViewModels.HomeVms.HomeVm
+@{ ViewData["Title"] = "Home"; }
+<div class="trailer">
+    <span class="close"><i></i></span>
+    <div class="pause-video" onclick="pauseVideo()"></div>
+    <div class="play-video" onclick="playVideo()"></div>
+    <div class="mute-sound" onclick="toggleMute();">
+        <div class="lottie no-trans">
+            <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_nfWP98.json"
+                           background="transparent.html" speed="1" loop autoplay></lottie-player>
+        </div> <span id="soundtext">Sound On</span>
+    </div><video preload="1" autoplay="" id='video' poster="/expert/assets/uploads/2020/08/Orange-BG.jpg">
+        <source type="video/mp4" src="/Images/@Model.HomeSetting.SliderVideo">
+    </video>
+</div>
+<div id="scroll-container" class="container-fluid">
+    <section class="header-space"></section>
+    @if (Model.HomeSetting.IsActiveSlider)
+    {
+<section class="hp-section hp-01 hp-01-01" id="hp-01">
+    <div class="in">
+        <div class="table">
+            <div class="table-cell">
+                <div class='inside'>
+                    <p style="display:none;"><span class="f-letter">Karam</span>EXPERIENCE MATTERS</p>
+                    <div class="hp-animation hp-animation-desktop hide-in-mobile">
+                        <img src='/Images/@Model.HomeSetting.SliderImage' alt='' />
+                    </div>
+                    <div class="hp-animation hp-animation-mobile hide-in-desctop">
+                        <img src='/Images/@Model.HomeSetting.SliderMobileImage' alt='' />
+                    </div>
+                    <div class='play'>
+                        <span></span><span></span><span></span>
+                        <figure>Play Showreel</figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>}
+    <section class="hp-section hp-02 hp-01-02"></section>
+    <section class="hp-section hp-03" style="display:none;background-image:url()" data-type="backgrounds" data-speed="10">
+        <div class="table">
+            <div class="table-cell"></div>
+        </div>
+    </section>
+    <section id='toScroll'></section>
+    @if (Model.HomeSetting.IsActiveAbout)
+    {
+<section class="hp-section hp-04">
+    <div class="in">
+        <div class="who-we-are wow">
+            <div class="title">
+                <div class='sline'></div>
+                <div class='d-out'>
+                    <span class="preloader-el title-ins"><span class="d-title">Who</span></span>
+                </div>
+                <div class='d-out'>
+                    <span class="preloader-el title-ins">
+                        <span class="d-title">
+                            We
+                            Are
+                        </span>
+                    </span>
+                </div> <span class="float-sumbol"></span>
+            </div>
+            <div class="description">
+                <div class="de-title">
+                    <p><strong>@Model.HomeSetting.AboutFirstTitle</strong><br /> <em>@Model.HomeSetting.AboutSocondTitle</em></p>
+                </div>
+                <div class="de-desc">
+                    <p>
+                        @Model.HomeSetting.AboutDescription
+                    </p>
+                </div> <a href='/Home/About' aria-label="More about us" class="more-in">
+                    <span class='arrow-a black-arrow'><i></i></span> <span class="more-link">
+                        <i>
+                            More about us
+                        </i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>}
+    @if (Model.HomeSetting.IsActiveService)
+    {
+<section class="hp-section hp-05 ">
+    <div class="in">
+        <div class="what-we-do wow">
+            <div class="title">
+                <div class='sline' data-wow-delay="0.1s"></div>
+                <div class='d-out'>
+                    <span class="preloader-el title-ins">
+                        <span class="d-title">What</span>
+                    </span>
+                </div>
+                <div class='d-out'>
+                    <span class="preloader-el title-ins">
+                        <span class="d-title">
+                            We
+                            Do
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="items">
+                <ul id="div_Services">
+                </ul>
+            </div>
+            <div class="line"></div>
+        </div>
+    </div>
+</section>}
+    @if (Model.HomeSetting.IsActiveOurWork)
+    {
+<section class="hp-section hp-06">
+    <div class="in">
+        <div class="who-we-are wow">
+            <div class="title">
+                <div class='sline'></div>
+                <div class='d-out'>
+                    <span class="preloader-el title-ins"><span class="d-title">Our</span></span>
+                </div>
+                <div class='d-out'>
+                    <span class="preloader-el title-ins">
+                        <span class="d-title">Work</span>
+                    </span>
+                </div> <span class="float-sumbol"></span>
+            </div>
+            <div class="description">
+                <div class="de-title">
+                    <p><strong>@Model.HomeSetting.OurWorkFirstTitle</strong><br /> <em>@Model.HomeSetting.OurWorkSocondTitle</em></p>
+                </div>
+                <div class="de-desc">
+                    <p>
+                        @Model.HomeSetting.OurWorkDescription
+                    </p>
+                </div> <a href='/Home/Work' aria-label="See them all" class="more-in">
+                    <span class='arrow-a black-arrow'><i></i></span> <span class="more-link">
+                        <i>
+                            See them
+                            all
+                        </i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>}
+    @if (Model.HomeSetting.IsActiveOurWorkDetails)
+    {
+<section class="hp-section hp-07">
+    <ul class='post-object'>
+        @foreach (var item in Model.Worsk)
+        {
+<li class="item wow animate__fadeInUp">
+    <a href='/Home/workDetails/@item.Id'
+       class="portfolio work" data-cat="work" aria-label="Leumi &#8211; Digital Account">
+        <div class="portfolio-wrapper b-lazy"
+             data-src="/Images/@item.MainImage">
+            <img src="/Images/@item.MainImage" alt='' />
+            <div class="label">
+                <div class="label-text">
+                    <div class="text-title">@item.Title</div> <span class="text-category">@item.Category</span> <span class="text-slug">
+                        @item.SubTitle
+                    </span>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+}
+    </ul>
+</section>}
+    @if (Model.HomeSetting.IsActiveAwards)
+    {
+<section class="hp-section hp-08">
+    <div class="in">
+        <div class="ins-out wow">
+            <ul class="awards-list awards">
+                <li>
+                    <div class="main-title">
+                        <div class='sline'></div>
+                        <div class='d-out'> <span data-count='@Model.Awards.sumCount'>25</span></div>
+                        <div class='d-out'>
+                            <span class="preloader-el title-ins">
+                                <span class="d-title">Award</span>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="de-desc">
+                        <p>@Model.HomeSetting.AwardsTitle</p>
+                    </div>
+                </li>
+            </ul>
+            <ul class="awards-list awards-items in">
+                @foreach (var item in Model.Awards.Awards)
+                {
+<li>
+    <ul class="item">
+        <li data-count='@item.Count'>1</li>
+        <li>
+            <p><strong>@item.Name</strong><br /> Awards</p>
+        </li>
+    </ul>
+</li>}
+
+
+            </ul>
+        </div>
+    </div>
+</section>}
+    @if (Model.HomeSetting.IsActiveOurCustomers)
+    {
+<section class="hp-section hp-09 bcg">
+    <div id="parallax1" class="parallaxParent">
+        <div class='no-trans' style="background-image:url(/Images/@Model.HomeSetting.OurCustomersImage)"></div>
+    </div>
+    <div class="in">
+        <div class="table-cell title wow">
+            <div class='d-out'>
+                <span class="preloader-el title-ins">
+                    <span class="d-title s-title">
+                        @Model.HomeSetting.OurCustomersTitle
+
+                    </span>
+                </span>
+            </div>
+           
+        </div>
+    </div>
+</section>}
+    @if (Model.HomeSetting.IsActiveOurCustomers)
+    {
+<section class="hp-section hp-10 wow">
+    <div class="in">
+        <div class="title">
+            <div class='sline'></div>
+            <div class="ded-title">
+                <p><em>@Model.HomeSetting.OurFriends</em>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <div class="item">
+                <div class="title">Organizations</div>
+            </div>
+            <div class="item">
+                <div class="title">Technology</div>
+            </div>
+        </div>
+        <div class="slider-for">
+            <div class="item">
+                <ul>
+                    @foreach (var item in Model.OurFriends.Where(x => x.CategoryFriends == Centroware.Model.Entities.enums.CategoryFriends.Organizations))
+                    {
+    <li>
+        <div class="out"> <img src="/Images/@item.Image" alt="@item.Name" /></div>
+    </li>}
+                </ul>
+            </div>
+            <div class="item">
+                <ul>
+                    @foreach (var item in Model.OurFriends.Where(x => x.CategoryFriends == Centroware.Model.Entities.enums.CategoryFriends.Technology))
+                    {
+    <li>
+        <div class="out"> <img src="/Images/@item.Image" alt="@item.Name" /></div>
+    </li>
+}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>}
+    @if (Model.HomeSetting.IsActiveSaying)
+    {
+<section class="hp-section hp-11 wow">
+    <div class="y-line"></div>
+    <div class="in">
+        <div class="title-section">
+            <div class="left">
+                <div class="title">
+                    <div class='sline'></div>
+                    <div class='d-out'>
+                        <span class="preloader-el title-ins">
+                            <span class="d-title">What</span>
+                        </span>
+                    </div>
+                    <div class='d-out'>
+                        <span class="preloader-el title-ins">
+                            <span class="d-title">
+                                They
+                                Say
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="description de-desc">
+                    <p>We swear we didn&#8217;t force them to</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="testimonials">
+        <div class="in">
+            <div class="testimonials-slider">
+                @if (Model.OpinoinVm != null && Model.OpinoinVm.Any())
+                {
+                    foreach (var item in Model.OpinoinVm)
+                    {
+
+<div class="item">
+    <div class="table">
+        <div class="left">
+            <div class="avatar">
+                <img src='/Images/@item.Image' alt=''>
+            </div>
+            <div class="name">@item.Name</div>
+            <div class="role">@item.Specialty</div>
+            <div class="logo">
+                <img src='/Images/@item.Logo'
+                     class='preloader-el' alt=''>
+            </div>
+        </div>
+        <div class="right">
+
+            <p>
+                @Html.Raw(item.Description)
+            </p>
+        </div>
+    </div>
+</div>}
+}
+            </div>
+        </div>
+    </div>
+</section>}
+</div>
+
+@section Scripts{
+    <script>
+        $.ajax({
+            url: '/Home/GetServices',
+            success: function (result) {
+                var res = "";
+                $.each(result, function (i, v) {
+                    res = res + '<li class="sitem item"><div class="thumb"><div class="icon"><img src="/Images/' + v.image + ' "alt="00" width="73", height="59" ></div><div class="description"><p><strong>' + v.title + '</strong></p></div></div></li>';
+                })
+                $("#div_Services").html(res);
+            }
+        });
+    </script>
+
+}

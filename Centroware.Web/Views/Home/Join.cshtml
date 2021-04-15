@@ -1,0 +1,65 @@
+﻿@model Centroware.Model.ViewModels.HomeVms.JoinVm
+@{ ViewData["Title"] = "Join"; }
+<section class="menu-bg"></section>
+<div class="join-top-section">
+    <div class="in">
+        <div class="table">
+            <div class="table-cell">
+                <div class="title">
+                    <div class='sline wow animate__sline' data-wow-delay="0.1s"></div>
+                    <div class='d-out'>
+                        <span class="wow animate__matrixUp" data-wow-delay="0.1s">
+                            <span class="d-title">Want to</span>
+                        </span>
+                    </div>
+                    <div class='d-out'>
+                        <span class="wow animate__matrixUp" data-wow-delay="0.1s">
+                            <span class="d-title">Join Us?</span>
+                        </span>
+                    </div>
+                </div>
+                <div class='top-main-desc hide-in-desctop'>
+                    <p>@Model.About.JoinUsTitle <em> @Model.About.JoinUsSubTitle</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="back-section">
+        <div class="table-row"></div>
+        <div class="table-row active wow animate__fadeInUp">
+            <div class="table">
+                <div class="table-cell"></div>
+                <div class="table-cell" style="background-image:url(/Images/@Model.About.JoinUsImage)">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="join-bottom-section">
+    <section id='toScroll'></section>
+    <div class="in">
+        <div class="table">
+            <div class='table-cell main-desc'>
+                <p>@Model.About.JoinUsTitle <em> @Model.About.JoinUsSubTitle</em></p>
+            </div>
+            <div class="table-cell jobs-descriptions">
+                <ul class="jobs">
+                    @if (Model.Jobs != null && Model.Jobs.Any())
+                    {
+                        @foreach (var item in Model.Jobs)
+                        {
+                <li id='job-@item.Id'>
+
+                    <div class='main-title'><div><i></i></div>@item.Title</div>
+                    <ul class="job-conten">
+                        <li>@Html.Raw(item.Description)</li>
+                    </ul>
+
+                </li>
+}
+                                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

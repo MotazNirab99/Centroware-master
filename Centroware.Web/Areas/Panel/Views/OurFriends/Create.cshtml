@@ -1,0 +1,42 @@
+﻿@model Centroware.Model.DTOs.OurFrinds.OurFriendsCreateDto
+@{ Layout = null; }
+
+<form asp-action="Create" method="post" class="ajaxForm" tname="#kt_datatable">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="CategoryFriends"></label>
+                <select asp-for="CategoryFriends" asp-items="Html.GetEnumSelectList<Centroware.Model.Entities.enums.CategoryFriends>()" class="form-control"></select>
+                <span asp-validation-for="CategoryFriends" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="ImageFile"></label>
+                <div class="custom-file">
+                    <input asp-for="ImageFile" type="file" class="custom-file-input" id="ImageFile">
+                    <label class="custom-file-label" for="ImageFile">Choose file</label>
+                </div>
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary font-weight-bold mr-2">Submit</button>
+        <button type="button" data-dismiss="modal" class="btn btn-light-primary font-weight-bold">Cancel</button>
+    </div>
+</form>
+
+
+<script>PageLoadActions();</script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+

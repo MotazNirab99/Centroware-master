@@ -1,0 +1,76 @@
+﻿@page
+@model Centroware.Web.Areas.Identity.Pages.Account.LoginModel
+
+@{
+    ViewData["Title"] = "Centroware | Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <title>Login Page 4 | Keenthemes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link href="~/assets/css/pages/login/classic/login-4.css?v=7.2.3" rel="stylesheet" type="text/css" />
+    <link href="~/assets/plugins/global/plugins.bundle.css?v=7.2.3" rel="stylesheet" type="text/css" />
+    <link href="~/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.2.3" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.bundle.css?v=7.2.3" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/header/base/light.css?v=7.2.3" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/header/menu/light.css?v=7.2.3" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/brand/dark.css?v=7.2.3" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/aside/dark.css?v=7.2.3" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="~/assets/media/logos/favicon.ico" />
+</head>
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+    <!--begin::Main-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Login-->
+        <div class="login login-4 login-signin-on d-flex flex-row-fluid" id="kt_login">
+            <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url('/assets/media/bg/bg-3.jpg');">
+                <div class="login-form text-center p-7 position-relative overflow-hidden">
+                    <!--begin::Login Header-->
+                    <div class="d-flex flex-center mb-15">
+                        <a href="#">
+                            <img src="/LogoCentroware.png" class="max-h-75px" alt="" />
+                        </a>
+                    </div>
+                    <div class="login-signin">
+                        <div class="mb-20">
+                            <h3>Login To Control Panel</h3>
+                            <div class="text-muted font-weight-bold">Enter your details to login to your account:</div>
+                        </div>
+                        <form method="post" class="form" id="kt_login_signin_form">
+                            <div class="form-group mb-5">
+                                <input asp-for="Input.Email" class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="Email" autocomplete="off" />
+                            </div>
+                            <div class="form-group mb-5">
+                                <input asp-for="Input.Password" class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="Password" />
+                            </div>
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group d-flex flex-wrap justify-content-between align-items-center">
+                                <div class="checkbox-inline">
+                                    <label class="checkbox m-0 text-muted">
+                                        <input asp-for="Input.RememberMe" type="checkbox" />
+                                        <span></span>Remember me
+                                    </label>
+                                </div>
+                                <a href="" id="kt_login_forgot" class="text-muted text-hover-primary">Forget Password ?</a>
+                            </div>
+                            <button id="kt_login_signin_submit" type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Sign In</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end::Login-->
+    </div>
+    <partial name="_ValidationScriptsPartial" />
+
+</body>
+<!--end::Body-->
+</html>
+
+

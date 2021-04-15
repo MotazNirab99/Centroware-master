@@ -1,0 +1,70 @@
+﻿@model Centroware.Model.DTOs.Teams.TeamUpdateDto
+@{ Layout = null; }
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<form asp-action="Edit" method="post" class="ajaxForm" tname="#kt_datatable">
+    <input asp-for="Id" type="hidden" />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Specialization"></label>
+                <input asp-for="Specialization" class="form-control" />
+                <span asp-validation-for="Specialization" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="StaticImageFile"></label>
+                <div class="custom-file">
+                    <input asp-for="StaticImageFile" type="file" class="custom-file-input" id="StaticImageFile">
+                    <label class="custom-file-label" for="StaticImageFile">Choose file</label>
+                </div>
+                <span asp-validation-for="StaticImageFile" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="MovedImageFile"></label>
+                <div class="custom-file">
+                    <input asp-for="MovedImageFile" type="file" class="custom-file-input" id="MovedImageFile">
+                    <label class="custom-file-label" for="MovedImageFile">Choose file</label>
+                </div>
+                <span asp-validation-for="MovedImageFile" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group tags-container">
+                <label>Description Team member </label>
+                <textarea asp-for="Description" id="summernote"></textarea>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary font-weight-bold mr-2">Submit</button>
+        <button type="button" data-dismiss="modal" class="btn btn-light-primary font-weight-bold">Cancel</button>
+    </div>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<script>
+    PageLoadActions();
+</script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<script>
+    $('#summernote').summernote({
+        height: 200
+    });
+</script>

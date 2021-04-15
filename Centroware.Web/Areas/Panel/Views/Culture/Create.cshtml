@@ -1,0 +1,195 @@
+﻿@model Centroware.Model.DTOs.Culture.CultureCreateDto
+@{ }
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<style>
+    .tags-container tags {
+        min-height: 35px;
+    }
+
+    .tagify {
+        padding-bottom: 3px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="card card-custom">
+            <div class="card-header">
+                <h3 class="card-title">Create Culture</h3>
+            </div>
+            <!--begin::Form-->
+            <div class="card-body">
+                <form asp-action="Create" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="CultureStringId" value="@ViewBag.CultureStringId" />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input asp-for="Titel" class="form-control" />
+                                <span asp-validation-for="Titel" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Title Link</label>
+                                <input asp-for="TitelLink" class="form-control" />
+                                <span asp-validation-for="TitelLink" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Main ImageFile</label>
+                                <div class="custom-file">
+                                    <input asp-for="MainImageFile" type="file" class="custom-file-input" id="StaticImageFile">
+                                    <label class="custom-file-label" for="StaticImageFile">Choose file</label>
+                                </div>
+                                <span asp-validation-for="MainImageFile" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group tags-container">
+                                    <label>Description Item</label>
+                                    <textarea asp-for="Description" id="summernote"></textarea>
+                                </div>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card-toolbar">
+                                <a href="#" class="btn btn-icon btn-circle btn-sm btn-light-success mr-1" data-toggle="modal" data-target="#exampleModalScrollable">
+                                    <i class="ki ki-plus icon-nm"></i>
+                                </a>
+                            </div>
+                            <br />
+                        </div>
+                        <div id="CultureItem_Dev" class="row">
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold mr-2">Submit</button>
+                        <a href="/Panel/Culture/Index" button type="button" data-dismiss="modal" class="btn btn-light-primary font-weight-bold">Cancel</a></button>
+                    </div>
+
+                </form>
+            </div>
+            <!--end::Form-->
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeLg">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <form id="ParagraphForm" class="form">
+                <input name="CultureStringId" type="hidden" value="@ViewBag.CultureStringId" />
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" name="TitleItem" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Image</label>
+                                <div class="custom-file">
+                                    <input name="ImageItemFile" type="file" class="custom-file-input" id="customFile" />
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                <button type="button" id="savebtn" class="btn btn-primary font-weight-bold">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+
+    <script>
+        // Class definition
+        var KTSelect2 = function () {
+
+            // Public functions
+            return {
+                init: function () {
+                    demos();
+                    modalDemos();
+                }
+            };
+        }();
+
+        // Initialization
+        jQuery(document).ready(function () {
+            KTSelect2.init();
+        });
+    </script>
+    <script>$('#summernote').summernote({ height: 200 });</script>
+    <script>$('#summernotemodal').summernote({ height: 200 });</script>
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).on("click", "#savebtn", function (e) {
+            if ($("#ParagraphForm").valid()) {
+                var form = jQuery('#ParagraphForm')[0];
+                var input = document.getElementById('customFile');
+                var data = new FormData(form);
+                data.append('ImageItemFile', input);
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '/Panel/Culture/CreateCultureItem',
+                    data: data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $(".modal-backdrop").removeClass('modal-backdrop');
+                        $("#exampleModalScrollable").modal('hide');
+                        form.reset();
+                        var json = JSON.parse(response.message);
+                        ShowMessage(json.msg);
+                        $("#CultureItem_Dev").append('<div  id="' + response.data.id + '" class="col-md-4"><div class="card card-custom gutter-b"><div class="card-header"><div class="card-title"><h3 class="card-label"><small>' + response.data.titleItem + '</small></h3></div><div class="card-toolbar"><a onClick="deleteCultureItem(' + response.data.id + ')" class="btn btn-sm btn-icon btn-light-danger mr-2"><i class="flaticon2-delete"></i></a></div></div></div></div>');
+                    },
+                    error: function (jqXHR, error, errorThrown) {
+
+                    }
+                });
+            }
+        });
+    </script>
+    <script>
+        function deleteCultureItem(id) {
+            jQuery.ajax({
+                type: 'Delete',
+                url: '/Panel/Culture/DeleteCultureItem/' + id + '',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    var json = JSON.parse(response);
+                    ShowMessage(json.msg);
+                    $("#" + id).remove();
+                },
+                error: function (jqXHR, error, errorThrown) {
+
+                }
+            });
+        };
+    </script>
+
+}
