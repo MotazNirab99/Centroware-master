@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Centroware.Model.DTOs.AwardsDto;
+using Centroware.Model.DTOs.Blog;
 using Centroware.Model.DTOs.Blogs;
 using Centroware.Model.DTOs.Culture;
 using Centroware.Model.DTOs.Jobs;
@@ -10,6 +11,7 @@ using Centroware.Model.DTOs.Teams;
 using Centroware.Model.DTOs.Users;
 using Centroware.Model.DTOs.Works;
 using Centroware.Model.Entities.Awards;
+using Centroware.Model.Entities.Blog;
 using Centroware.Model.Entities.Blogs;
 using Centroware.Model.Entities.Contact;
 using Centroware.Model.Entities.Culture;
@@ -20,6 +22,7 @@ using Centroware.Model.Entities.Sayings;
 using Centroware.Model.Entities.Settings;
 using Centroware.Model.Entities.Teams;
 using Centroware.Model.Entities.Works;
+using Centroware.Model.ViewModels.Blog;
 using Centroware.Model.ViewModels.Contacts;
 using Centroware.Model.ViewModels.Culture;
 using Centroware.Model.ViewModels.HomeVms;
@@ -54,7 +57,6 @@ namespace Centroware.Web
             CreateMap<CreateUserDto, CentrowareUser>();
             CreateMap<UpdateUserDto, CentrowareUser>().ReverseMap();
 
-
             CreateMap<AboutSettingVm, AboutSetting>().ReverseMap();
             CreateMap<HomeSettingVm, HomeSetting>().ReverseMap();
             CreateMap<MainSettingVm, MainSetting>().ReverseMap();
@@ -75,9 +77,11 @@ namespace Centroware.Web
             CreateMap<CultureItemCreateDto, CultureItem>().ReverseMap();
             CreateMap<CultureItemVm, CultureItem>().ReverseMap();
 
+            CreateMap<PostsCreateDto, Posts>().ReverseMap();
+            CreateMap<PostsVm, Posts>().ReverseMap();
+
             CreateMap<AwardsCreateDto, Awards>();
             CreateMap<AwardsUpdateDto, Awards>().ReverseMap();
-
 
             CreateMap<OpinionDto, Opinion>();
             CreateMap<UpdateOpinionDto, Opinion>().ReverseMap();

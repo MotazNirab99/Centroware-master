@@ -102,25 +102,24 @@
             <!--end::Header-->
             <!--begin::Body-->
             <div class="card-body pt-0">
-                @foreach (var item in Model.Blogs)
-                {
+                
                     <!--begin::Item-->
                     <div class="d-flex align-items-center flex-wrap mb-8">
                         <!--begin::Symbol-->
                         <div class="symbol symbol-50 symbol-light mr-5">
                             <span class="symbol-label">
-                                <img src="/Images/@item.ImagePath" class="h-50 align-self-center" alt="">
+                                <img src="/Images/" class="h-50 align-self-center" alt="">
                             </span>
                         </div>
                         <!--end::Symbol-->
                         <!--begin::Text-->
                         <div class="d-flex flex-column flex-grow-1 mr-2">
-                            <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">@item.Title</a>
-                            <span class="text-muted font-weight-bold">@item.Category</span>
+                            <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1"></a>
+                            <span class="text-muted font-weight-bold"></span>
                         </div>
                         <!--end::Text-->
                     </div>
-                    <!--end::Item-->}
+                    <!--end::Item-->
             </div>
             <!--end::Body-->
         </div>

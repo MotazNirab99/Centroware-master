@@ -30,6 +30,9 @@ namespace Centroware.Model.ViewModels.Settings
         public string AboutSecondTitel { get; set; }
         [Display(Name = "Culture Main Title")]
         public string HeadlineCulture { get; set; }
+        [Display(Name = "Blog Title")]
+        public string BlogTitel { get; set; }
+
         [Display(Name = "activate Slider")]
         public bool IsActiveSlider { get; set; }
         [Display(Name = "activate Works")]

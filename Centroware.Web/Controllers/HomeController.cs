@@ -28,7 +28,7 @@ namespace Centroware.Web.Controllers
         {
             var response = await _homeService.GetAboutPage();
             return View(response);
-        } 
+        }
         public async Task<IActionResult> Work()
         {
             var response = await _homeService.GetWorksPage();
@@ -60,6 +60,13 @@ namespace Centroware.Web.Controllers
             var response = await _homeService.GetJob();
             return View(response);
         }
+
+        public async Task<IActionResult> Blogs()
+        {
+            var response = await _homeService.GetBlogPage();
+            return View(response);
+        }
+
 
     }
 }

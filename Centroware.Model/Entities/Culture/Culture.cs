@@ -12,7 +12,6 @@ namespace Centroware.Model.Entities.Culture
         public string Titel { get; set; }
         public string TitelLink { get; set; }
         public string Description { get; set; }
-
         public string CultureStringId { get; set; }
         public List<CultureItem> CultureItems { get; set; }
 

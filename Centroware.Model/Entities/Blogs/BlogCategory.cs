@@ -9,6 +9,8 @@ namespace Centroware.Model.Entities.Blogs
     public class BlogCategory : BaseEntity
     {
         public string Name { get; set; }
+        public string Image { get; set; }
+        public string Description { get; set; }
         public List<Blog> Blogs { get; set; }
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Centroware.Service.Interfaces
 {
-    public interface  ICultureService
+    public interface  ICultureService 
     {
         Task<ResponseDto> GetAll(Pagination pagination, Query query);
         Task<CultureUpdateDto> Get(int id);

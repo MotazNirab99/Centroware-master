@@ -40,16 +40,7 @@ namespace Centroware.Service.Services
                 }).ToListAsync();
 
 
-            var blogs = await _blogRepository.Filter(filter: x => x.Id > 0, 0, 5,
-                orderBy: x => x.OrderByDescending(x => x.Id),
-                include: x => x.Include(x => x.BlogCategory))
-                .Select(x => new BlogVm
-                {
-                    Title = x.Title,
-                    Id = x.Id,
-                    Category = x.BlogCategory.Name,
-                    ImagePath = x.ImagePath
-                }).ToListAsync();
+         
 
 
             var data = new DashboardVm
@@ -58,7 +49,7 @@ namespace Centroware.Service.Services
                 ContactCount = await _contactRepository.GetCountAsync(null),
                 TeamsCount = await _teamRepository.GetCountAsync(null),
                 Teams =  teams,
-                Blogs =  blogs,
+                
             };
 
 

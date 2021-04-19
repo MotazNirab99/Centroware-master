@@ -15,6 +15,7 @@ namespace Centroware.Model.Entities.Settings
         public string AboutFirstTitel { get; set; }
         public string AboutSecondTitel { get; set; }
         public string HeadlineCulture { get; set; }
+        public string BlogTitel { get; set; }
         public bool IsActiveSlider { get; set; }
         public bool IsActiveWorks { get; set; }
         public bool IsActiveOurTeam { get; set; }

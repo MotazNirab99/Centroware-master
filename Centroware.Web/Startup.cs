@@ -50,8 +50,7 @@ namespace Centroware.Web
             services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddTransient<IFileService, FileService>();
             services.AddTransient<ITeamService, TeamService>();
-            services.AddTransient<IBlogService, BlogService>();
-            services.AddTransient<IBlogCategoryService, BlogCategoryService>();
+          
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IDashboardService, DashboardService>();
             services.AddTransient<IServiceService, ServiceService>();
@@ -65,6 +64,7 @@ namespace Centroware.Web
             services.AddTransient<IOurFriendsService, OurFriendsService>();
             services.AddTransient<IAwardsService, AwardsService>();
             services.AddTransient<ICultureService, CultureService>();
+            services.AddTransient<IPostsService, PostsService>();
              
 
         }

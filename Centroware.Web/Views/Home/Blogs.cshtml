@@ -1,0 +1,107 @@
+﻿@model Centroware.Model.ViewModels.Blog.BlogsVm
+@{ ViewData["Title"] = "Blog"; }
+<section class="menu-bg"></section>
+<section class="header-space"></section>
+<section class="category-header works-header">
+    <div class="in">
+        <div class="table">
+            <div class="table-cell title">
+                <div class="sline wow animate__sline" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: sline;"></div>
+                <div class="d-out">
+                    <span class="wow animate__matrixUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: matrix;"><span class="d-title">Our</span></span>
+                </div>
+                <div class="d-out">
+                    <span class="wow animate__matrixUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: matrix;"><span class="d-title">Blog</span></span>
+                </div>
+                <span class="float-sumbol wow animate__fadeIn animate__animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeIn;"></span>
+            </div>
+            <div class="table-cell description wow animate__fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                <p>Here’s a selection of our ARTICLES. Enjoy!</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div id='toScroll'></div>
+<section class="more_works hide-in-desctop wow animate__fadeInUp" data-wow-duration="1s">
+    <div class="inside">
+        <div class='title'>
+            <p><strong>Posts</strong></p>
+        </div>
+        @foreach (var item in Model.Posts)
+        {
+            <div class="post-object">
+                <div class="item" style="width: 50%;">
+                    <a href='../apps/leumi-digital-account.html' class="portfolio "
+                       data-cat="" aria-label="Leumi &#8211; Digital Account">
+                        <div class="portfolio-wrapper"
+                             style="background-image:url(assets/uploads/2020/05/%d7%a8%d7%90%d7%a9%d7%99-1024x541.jpg)">
+                            <img src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw = = alt='' />
+                            <div class="label">
+                                <div class="label-text">
+                                    <div class="text-title">Leumi &#8211; Digital Account</div> <span class="text-category" style="font-family: 'Montserrat',Arial,sans-serif;font-size: .7rem;">PRODUCT - July 24, 2021</span>
+                                    <span class="text-slug">
+                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                        when an unknown printer took a galley of type and scrambled it to make a type
+                                        specimen book. It has survived not only five centuries
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+
+
+
+    </div>
+</section>
+<section class="menu-bg"></section>
+<section class="header-space"></section>
+<section class='work-header show-gradient b-lazy'
+         data-src="https://www.uxpert.com/wp-content/uploads/2020/06/herogradient.jpg">
+    <div class="in">
+        <div class="table">
+            <div class="table-cell">
+                <h1>is simply dummy text of the printing and typesetting industry.</h1>
+
+                <p style="font-size: .6rem;font-weight: bold;">PRODUCT - July 24, 2021</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div id='toScroll'></div>
+<section class="grid-three  wow animate__fadeInUp" data-wow-duration="1s"
+         style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
+    <div class="in">
+        <div class="table top">
+            <div class="table-cell title">Great product design starts with getting to know your users</div>
+            <div class="table-cell description">
+                <p>
+                    So, we began at their locations, watching them work, listening to their phone orders, and
+                    learning their process. Of course, we also tried our fair share of their products…
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="work-about" style="    padding-top: 0; !important">
+    <div class="in">
+        <ul class="list">
+            <li>
+                <div class="title">about</div>
+                <div class="desc">
+                    <p class="p1">
+                        Buying a gift for a friend can be stressful. Buying a digital gift card
+                        effectively takes away the stress and injects a whole lot of fun into the process.<br>
+                        That is what we set out to do in designing and developing MAX’s responsive digital gift card
+                        website.
+                    </p>
+                  
+                </div>
+                <a href="#" rel="nofollow" class="read-more hide-in-desctop" aria-label=""><span></span></a>
+            </li>
+        </ul>
+    </div>
+</section>
+

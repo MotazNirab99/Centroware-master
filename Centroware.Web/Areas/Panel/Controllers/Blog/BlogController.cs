@@ -1,26 +1,29 @@
 ﻿using Centroware.Model.Constants;
-using Centroware.Model.DTOs.Blogs;
+using Centroware.Model.DTOs.Blog;
 using Centroware.Model.DTOs.Helpers;
 using Centroware.Model.Entities.Identity;
 using Centroware.Service.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Centroware.Web.Areas.Panel.Controllers.Blog
 {
     public class BlogController : BaseController
     {
-        private readonly IBlogService _blogService;
-        public BlogController(IBlogService BlogService, UserManager<CentrowareUser> userManager) : base(userManager)
+        private readonly IPostsService _postsService;
+        public BlogController(IPostsService postsService, UserManager<CentrowareUser> userManager) : base(userManager)
         {
-            _blogService = BlogService;
+            _postsService = postsService;
         }
 
         [HttpPost]
         public async Task<JsonResult> GetAll(Pagination pagination, Query query)
         {
-            var response = await _blogService.GetAll(pagination, query);
+            var response = await _postsService.GetAll(pagination, query);
             return Json(response);
         }
         [HttpGet]
@@ -35,14 +38,12 @@ namespace Centroware.Web.Areas.Panel.Controllers.Blog
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(BlogCreateDto input)
+        public async Task<IActionResult> Create(PostsCreateDto input)
         {
             if (ModelState.IsValid)
             {
-                var isCreated = await _blogService.AddBlog(input);
-                if (isCreated)
-                    TempData["result"] = Constant.AddSuccessfully;
-                return RedirectToAction("Index");
+                var isCreated = await _postsService.AddPosts(input);
+                if (isCreated) return Content(Constant.AddSuccessResult());
             }
             return View(input);
         }
@@ -50,28 +51,24 @@ namespace Centroware.Web.Areas.Panel.Controllers.Blog
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var data = await _blogService.Get(id);
+            var data = await _postsService.Get(id);
             return View(data);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(BlogUpdateDto input)
+        public async Task<IActionResult> Edit(PostsUpdateDto input)
         {
             if (ModelState.IsValid)
             {
-                var isUpdated = await _blogService.UpdateBlog(input);
-                if (isUpdated)
-                {
-                    TempData["result"] = Constant.UpdateSettings;
-                    return RedirectToAction("Index");
-                }
+                var isUpdated = await _postsService.UpdatePosts(input);
+                if (isUpdated) return Content(Constant.EditSuccessResult());
             }
             return View(input);
         }
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var isDeleted = await _blogService.Delete(id);
+            var isDeleted = await _postsService.Delete(id);
             if (isDeleted) return Content(Constant.DeleteSuccessResult());
             return Content(Constant.DeleteFailedResult());
         }

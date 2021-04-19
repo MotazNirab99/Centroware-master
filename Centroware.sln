@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Centroware.Data", "Centrowa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Centroware.Service", "Centroware.Service\Centroware.Service.csproj", "{66311FFB-1F11-49E2-89AB-FBFD197C5A16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Centroware.Model", "Centroware.Model\Centroware.Model.csproj", "{0402F7F0-0D68-4197-8DA2-5C4A694092DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Centroware.Model", "Centroware.Model\Centroware.Model.csproj", "{0402F7F0-0D68-4197-8DA2-5C4A694092DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

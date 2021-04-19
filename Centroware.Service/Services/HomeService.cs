@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Centroware.Model.Entities.Awards;
+using Centroware.Model.Entities.Blogs;
 using Centroware.Model.Entities.Contact;
 using Centroware.Model.Entities.Culture;
 using Centroware.Model.Entities.Jobs;
@@ -43,10 +44,12 @@ namespace Centroware.Service.Services
         private readonly IBaseRepository<OurFriends> _ourFriendsRepository;
         private readonly IBaseRepository<Awards> _awardsRepository;
         private readonly IBaseRepository<Culture> _cultureRepository;
+        private readonly IBaseRepository<BlogCategory> _blogCategoryRepository;
         private readonly IMapper _mapper;
         private readonly IBaseRepository<Model.Entities.Services.Service> _ServicesRepository;
 
-        public HomeService(IBaseRepository<HomeSetting> homeSettingRepository, IBaseRepository<AboutSetting> aboutSettingRepository, IBaseRepository<Culture> cultureRepository, IBaseRepository<MainSetting> mainSettingRepository, IBaseRepository<Opinion> opinionRepository, IBaseRepository<Contact> contactRepository, IBaseRepository<Work> workRepository, IBaseRepository<Category> categoryRepository, IBaseRepository<Team> teamRepository, IBaseRepository<Job> jobRepository, IBaseRepository<OurFriends> ourFriendsRepository, IBaseRepository<Awards> awardsRepository, IMapper mapper, IBaseRepository<Model.Entities.Services.Service> servicesRepository)
+        public HomeService(IBaseRepository<HomeSetting> homeSettingRepository, IBaseRepository<AboutSetting> aboutSettingRepository, IBaseRepository<Culture> cultureRepository, IBaseRepository<MainSetting> mainSettingRepository, IBaseRepository<Opinion> opinionRepository, IBaseRepository<Contact> contactRepository, IBaseRepository<Work> workRepository, IBaseRepository<Category> categoryRepository,
+            IBaseRepository<Team> teamRepository, IBaseRepository<Job> jobRepository, IBaseRepository<BlogCategory> blogCategoryRepository, IBaseRepository<OurFriends> ourFriendsRepository, IBaseRepository<Awards> awardsRepository, IMapper mapper, IBaseRepository<Model.Entities.Services.Service> servicesRepository)
         {
             _homeSettingRepository = homeSettingRepository;
             _aboutSettingRepository = aboutSettingRepository;
@@ -60,6 +63,7 @@ namespace Centroware.Service.Services
             _ourFriendsRepository = ourFriendsRepository;
             _awardsRepository = awardsRepository;
             _cultureRepository = cultureRepository;
+            _blogCategoryRepository = blogCategoryRepository;
             _mapper = mapper;
             _ServicesRepository = servicesRepository;
         }
@@ -249,6 +253,30 @@ namespace Centroware.Service.Services
             return new WorksVm { Categories = categories, Works = works };
         }
 
+        public Task<WorksVm> GetBlogPage()
+        {
+            throw new System.NotImplementedException();
+        }
 
+        public Task<BlogCategoryVm> GetBlogCategory()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        //public async Task<BlogCategoryVm> GetBlogCategory()
+        //{
+
+        //    var works = await _blogCategoryRepository.Filter(filter: x => x.Id > 0,
+        //        orderBy: x => x.OrderByDescending(x => x.Id),
+        //        include: x => x.Include(x => x.Category)).Select(x => new WorkVm
+        //        {
+        //            Id = x.Id,
+        //            Title = x.Title,
+        //            SubTitle = x.SubTitle,
+        //            MainImage = x.MainImage,
+        //            Category = x.Category.Name,
+        //            CategoryId = x.CategoryId
+        //        }).ToListAsync();
+        //}
     }
 }

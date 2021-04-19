@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,7 @@ namespace Centroware.Model.DTOs.Blogs
     public class BlogCategoryCreateDto
     {
         public string Name { get; set; }
+        public string Description { get; set; }
+        public IFormFile MainImageFile { get; set; }
     }
 }

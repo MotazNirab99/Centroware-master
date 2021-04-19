@@ -11,6 +11,6 @@ namespace Centroware.Model.ViewModels
         public int ArticleCount { get; set; }
         public int TeamsCount { get; set; }
         public List<TeamVm> Teams { get; set; }
-        public List<BlogVm> Blogs { get; set; }
+        //public List<BlogVm> Blogs { get; set; }
     }
 }

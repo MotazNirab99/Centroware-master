@@ -43,6 +43,62 @@ namespace Centroware.Data.Data.Migrations
                     b.ToTable("Awards");
                 });
 
+            modelBuilder.Entity("Centroware.Model.Entities.Blog.Blogs", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BlogTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BlogsStringId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Blog");
+                });
+
+            modelBuilder.Entity("Centroware.Model.Entities.Blog.Posts", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("BlogsId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogsId");
+
+                    b.ToTable("Posts");
+                });
+
             modelBuilder.Entity("Centroware.Model.Entities.Blogs.Blog", b =>
                 {
                     b.Property<int>("Id")
@@ -89,6 +145,12 @@ namespace Centroware.Data.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreatedByUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -395,6 +457,9 @@ namespace Centroware.Data.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AboutSecondTitel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BlogTitel")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -850,6 +915,13 @@ namespace Centroware.Data.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Centroware.Model.Entities.Blog.Posts", b =>
+                {
+                    b.HasOne("Centroware.Model.Entities.Blog.Blogs", null)
+                        .WithMany("Posts")
+                        .HasForeignKey("BlogsId");
+                });
+
             modelBuilder.Entity("Centroware.Model.Entities.Blogs.Blog", b =>
                 {
                     b.HasOne("Centroware.Model.Entities.Blogs.BlogCategory", "BlogCategory")
@@ -948,6 +1020,11 @@ namespace Centroware.Data.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Centroware.Model.Entities.Blog.Blogs", b =>
+                {
+                    b.Navigation("Posts");
                 });
 
             modelBuilder.Entity("Centroware.Model.Entities.Blogs.BlogCategory", b =>

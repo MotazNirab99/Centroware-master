@@ -1,4 +1,5 @@
 ﻿using Centroware.Model.Entities.Awards;
+using Centroware.Model.Entities.Blog;
 using Centroware.Model.Entities.Blogs;
 using Centroware.Model.Entities.Contact;
 using Centroware.Model.Entities.Culture;
@@ -68,6 +69,10 @@ namespace Centroware.Data.Data
         #endregion
         #region CultureItem
         public DbSet<CultureItem> CulturesItem { get; set; }
+        #endregion
+        #region Blog
+        public DbSet<Blogs> Blog { get; set; }
+        public DbSet<Posts> Posts { get; set; }
         #endregion
     }
 }

@@ -1,4 +1,4 @@
-var KTDatatableAutoColumnHideDemo = function () {
+﻿var KTDatatableAutoColumnHideDemo = function () {
     var demo = function demo() {
         var datatable = $('#kt_datatable').KTDatatable({
             data: {
@@ -28,38 +28,26 @@ var KTDatatableAutoColumnHideDemo = function () {
                 key: 'generalSearch'
             },
             columns: [{
-                field: 'id',
-                title: '#',
-            }, {
-                field: 'title',
-                title: 'Title',
-                width: 'auto',
-                autoHide: false,
-                textAlign: 'center'
-
-            },
-            {
-                field: 'category',
-                title: 'Category',
-                width: 'auto',
-                autoHide: false,
-                textAlign: 'center'
-
-            },
-            {
-                field: 'imagePath',
-                title: 'Post Image',
-                autoHide: false,
-                width: 250,
-                template: function template(data) {
-                    var output = '-';
-                    if (data.imagePath != null) {
-                        output = '<div class=\"d-flex align-items-center\"> <div class=\"symbol symbol-40 symbol-sm flex-shrink-0\"> \t<img class=\"\" src="/Images/' + data.imagePath + '" alt=\"photo\"> </div> </div>';
+                    field: 'id',
+                    title: '#'
+                },{
+                    field: 'title',
+                    title: 'Blog Title',
+                    width: 'auto'
+                }, {
+               
+                    field: 'image',
+                    title: 'Blog Image',
+                    autoHide: false,
+                    width: 300,
+                    template: function template(data) {
+                        var output = '-';
+                        if (data.image != null) {
+                            output = '<div class=\"d-flex align-items-center\"> <div class=\"symbol symbol-40 symbol-sm flex-shrink-0\"> \t<img class=\"\" src="/Images/' + data.image + '" alt=\"photo\"> </div> </div>';
+                        }
+                        return output;
                     }
-                    return output;
-                }
-            },
-            {
+                }, {
                 field: 'Actions',
                 title: 'Actions',
                 sortable: false,
@@ -95,7 +83,12 @@ var KTDatatableAutoColumnHideDemo = function () {
 
         });
 
-
+        $('#kt_datatable_search_status').on('change', function () {
+            datatable.search($(this).val().toLowerCase(), 'Status');
+        });
+        $('#kt_datatable_search_type').on('change', function () {
+            datatable.search($(this).val().toLowerCase(), 'Type');
+        });
         $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
         console.log(datatable.getDataSourceQuery());
     };
@@ -108,4 +101,3 @@ var KTDatatableAutoColumnHideDemo = function () {
 jQuery(document).ready(function () {
     KTDatatableAutoColumnHideDemo.init();
 });
-
