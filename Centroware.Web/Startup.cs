@@ -58,7 +58,6 @@ namespace Centroware.Web
             services.AddTransient<IContactService, ContactService>();
             services.AddTransient<IHomeService, HomeService>();
             services.AddTransient<IWorkService, WorkService>();
-            services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IOpinionService, OpinionService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IOurFriendsService, OurFriendsService>();

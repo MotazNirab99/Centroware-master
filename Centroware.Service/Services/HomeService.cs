@@ -10,7 +10,6 @@ using Centroware.Model.Entities.Settings;
 using Centroware.Model.Entities.Teams;
 using Centroware.Model.Entities.Works;
 using Centroware.Model.ViewModels.AwardsVm;
-using Centroware.Model.ViewModels.Blogs;
 using Centroware.Model.ViewModels.Contacts;
 using Centroware.Model.ViewModels.Culture;
 using Centroware.Model.ViewModels.HomeVms;
@@ -244,13 +243,8 @@ namespace Centroware.Service.Services
                     Category = x.Category.Name,
                     CategoryId = x.CategoryId
                 }).ToListAsync();
-            var categories = await _categoryRepository.Filter(filter: x => x.Id > 0,
-                orderBy: x => x.OrderByDescending(x => x.Id)).Select(x => new BlogCategoryVm
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                }).ToListAsync();
-            return new WorksVm { Categories = categories, Works = works };
+           
+            return new WorksVm { Works = works };
         }
 
         public Task<WorksVm> GetBlogPage()
@@ -258,10 +252,7 @@ namespace Centroware.Service.Services
             throw new System.NotImplementedException();
         }
 
-        public Task<BlogCategoryVm> GetBlogCategory()
-        {
-            throw new System.NotImplementedException();
-        }
+       
 
         //public async Task<BlogCategoryVm> GetBlogCategory()
         //{

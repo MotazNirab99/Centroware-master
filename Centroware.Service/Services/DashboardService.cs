@@ -2,7 +2,6 @@
 using Centroware.Model.Entities.Contact;
 using Centroware.Model.Entities.Teams;
 using Centroware.Model.ViewModels;
-using Centroware.Model.ViewModels.Blogs;
 using Centroware.Repository.Interfaces.Generic;
 using Centroware.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;

@@ -32,10 +32,7 @@
             <nav class="filter-nav">
                 <ul id="filters" class="clearfix button-group">
                     <li><span class="filter button active" data-filter="*">All</span></li>
-                    @foreach (var item in Model.Categories)
-                    {
-                        <li><span class="filter button" data-filter=".@item.Id">@item.Name</span></li>
-                    }
+                   
                 </ul>
             </nav>
         </div>
