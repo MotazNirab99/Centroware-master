@@ -16,7 +16,7 @@
                 <span class="float-sumbol wow animate__fadeIn animate__animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeIn;"></span>
             </div>
             <div class="table-cell description wow animate__fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                <p>Here’s a selection of our ARTICLES. Enjoy!</p>
+                <p>@Model.About.BlogTitel</p>
             </div>
         </div>
     </div>
@@ -27,7 +27,8 @@
         <div class='title'>
             <p><strong>Posts</strong></p>
         </div>
-       
+        @foreach (var item in Model.Posts)
+        {
             <div class="post-object">
                 <div class="item" style="width: 50%;">
                     <a href='../apps/leumi-digital-account.html' class="portfolio "
@@ -49,7 +50,7 @@
                     </a>
                 </div>
             </div>
-      
+        }
 
 
 

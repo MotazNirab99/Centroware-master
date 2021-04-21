@@ -10,7 +10,7 @@ namespace Centroware.Model.ViewModels.HomeVms
 {
     public class BlogVm
     {
-        public List<PostsVm> Jobs { get; set; }
+        public List<PostsVm> Posts { get; set; }
         public AboutSettingVm About { get; set; }
     }
 }
