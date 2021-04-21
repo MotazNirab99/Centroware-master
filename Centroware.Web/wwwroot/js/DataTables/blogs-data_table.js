@@ -55,7 +55,7 @@
                 overflow: 'visible',
                 autoHide: false,
                 template: function (data) {
-                    return '\<a  href ="/Panel/Blog/Edit/' + data.id + '" class="btn btn-sm btn-clean btn-icon mr-2" title="Update ' + data.name + ' Information">\
+                    return '\<a  href ="/Panel/Blog/Edit/' + data.id + '" class="PopUp btn btn-sm btn-clean btn-icon mr-2" title="Update ' + data.name + ' Information">\
                             <span class="svg-icon svg-icon-md">\
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\

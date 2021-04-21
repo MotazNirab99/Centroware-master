@@ -78,7 +78,7 @@ namespace Centroware.Web
             CreateMap<CultureItemVm, CultureItem>().ReverseMap();
 
             CreateMap<PostsCreateDto, Posts>().ReverseMap();
-            CreateMap<PostsVm, Posts>().ReverseMap();
+            CreateMap<PostsUpdateDto, Posts>().ReverseMap();
 
             CreateMap<AwardsCreateDto, Awards>();
             CreateMap<AwardsUpdateDto, Awards>().ReverseMap();

@@ -1,4 +1,4 @@
-﻿@model Centroware.Model.ViewModels.Blog.BlogsVm
+﻿@model Centroware.Model.ViewModels.HomeVms.BlogVm
 @{ ViewData["Title"] = "Blog"; }
 <section class="menu-bg"></section>
 <section class="header-space"></section>
@@ -27,8 +27,7 @@
         <div class='title'>
             <p><strong>Posts</strong></p>
         </div>
-        @foreach (var item in Model.Posts)
-        {
+       
             <div class="post-object">
                 <div class="item" style="width: 50%;">
                     <a href='../apps/leumi-digital-account.html' class="portfolio "
@@ -50,7 +49,7 @@
                     </a>
                 </div>
             </div>
-        }
+      
 
 
 
