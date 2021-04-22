@@ -12,7 +12,7 @@ namespace Centroware.Model.ViewModels.Blog
         public string Description { get; set; }
         public string Image { get; set; }
         public string Title { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public string CreatedAt { get; set; }
 
     }
 }

@@ -82,6 +82,7 @@ namespace Centroware.Web
 
             CreateMap<AwardsCreateDto, Awards>();
             CreateMap<AwardsUpdateDto, Awards>().ReverseMap();
+            CreateMap<PostsVm, Posts>().ReverseMap();
 
             CreateMap<OpinionDto, Opinion>();
             CreateMap<UpdateOpinionDto, Opinion>().ReverseMap();

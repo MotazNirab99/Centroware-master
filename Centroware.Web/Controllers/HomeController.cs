@@ -63,10 +63,15 @@ namespace Centroware.Web.Controllers
 
         public async Task<IActionResult> Blogs()
         {
-            var response = await _homeService.GetBlogPage();
+            var response = await _homeService.GetBlogs();
             return View(response);
         }
 
+        public async Task<IActionResult> Blog(int id)
+        {
+            var response = await _homeService.GetBlog(id);
+            return View(response);
+        }
 
     }
 }

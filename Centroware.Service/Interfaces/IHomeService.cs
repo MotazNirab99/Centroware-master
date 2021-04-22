@@ -1,5 +1,6 @@
 ﻿using Centroware.Model.Entities.Settings;
 using Centroware.Model.ViewModels.AwardsVm;
+using Centroware.Model.ViewModels.Blog;
 using Centroware.Model.ViewModels.Contacts;
 using Centroware.Model.ViewModels.Culture;
 using Centroware.Model.ViewModels.HomeVms;
@@ -28,9 +29,11 @@ namespace Centroware.Service.Interfaces
         Task<List<OurFriendsVm>> GetOurFriends();
         Task<SumAwards> GetSumAwards();
         Task<WorksVm> GetWorksPage();
-        Task<WorksVm> GetBlogPage();
         Task<WorkRelated> GetWork(int id);
         Task<JoinVm> GetJob();
+        Task<BlogVm> GetBlogs();
+        Task<PostsVm> GetBlog(int id);
+
         Task<List<CultureVm>> GetCulture();
     }
 }

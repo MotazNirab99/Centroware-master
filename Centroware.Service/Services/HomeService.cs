@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Centroware.Model.Entities.Awards;
+using Centroware.Model.Entities.Blog;
 using Centroware.Model.Entities.Blogs;
 using Centroware.Model.Entities.Contact;
 using Centroware.Model.Entities.Culture;
@@ -10,6 +11,7 @@ using Centroware.Model.Entities.Settings;
 using Centroware.Model.Entities.Teams;
 using Centroware.Model.Entities.Works;
 using Centroware.Model.ViewModels.AwardsVm;
+using Centroware.Model.ViewModels.Blog;
 using Centroware.Model.ViewModels.Contacts;
 using Centroware.Model.ViewModels.Culture;
 using Centroware.Model.ViewModels.HomeVms;
@@ -43,12 +45,11 @@ namespace Centroware.Service.Services
         private readonly IBaseRepository<OurFriends> _ourFriendsRepository;
         private readonly IBaseRepository<Awards> _awardsRepository;
         private readonly IBaseRepository<Culture> _cultureRepository;
-        private readonly IBaseRepository<BlogCategory> _blogCategoryRepository;
+        private readonly IBaseRepository<Posts> _postsRepository;
         private readonly IMapper _mapper;
         private readonly IBaseRepository<Model.Entities.Services.Service> _ServicesRepository;
 
-        public HomeService(IBaseRepository<HomeSetting> homeSettingRepository, IBaseRepository<AboutSetting> aboutSettingRepository, IBaseRepository<Culture> cultureRepository, IBaseRepository<MainSetting> mainSettingRepository, IBaseRepository<Opinion> opinionRepository, IBaseRepository<Contact> contactRepository, IBaseRepository<Work> workRepository, IBaseRepository<Category> categoryRepository,
-            IBaseRepository<Team> teamRepository, IBaseRepository<Job> jobRepository, IBaseRepository<BlogCategory> blogCategoryRepository, IBaseRepository<OurFriends> ourFriendsRepository, IBaseRepository<Awards> awardsRepository, IMapper mapper, IBaseRepository<Model.Entities.Services.Service> servicesRepository)
+        public HomeService(IBaseRepository<HomeSetting> homeSettingRepository, IBaseRepository<AboutSetting> aboutSettingRepository, IBaseRepository<MainSetting> mainSettingRepository, IBaseRepository<Opinion> opinionRepository, IBaseRepository<Contact> contactRepository, IBaseRepository<Work> workRepository, IBaseRepository<Category> categoryRepository, IBaseRepository<Team> teamRepository, IBaseRepository<Job> jobRepository, IBaseRepository<OurFriends> ourFriendsRepository, IBaseRepository<Awards> awardsRepository, IBaseRepository<Culture> cultureRepository, IBaseRepository<Posts> postsRepository, IMapper mapper, IBaseRepository<Model.Entities.Services.Service> servicesRepository)
         {
             _homeSettingRepository = homeSettingRepository;
             _aboutSettingRepository = aboutSettingRepository;
@@ -62,7 +63,7 @@ namespace Centroware.Service.Services
             _ourFriendsRepository = ourFriendsRepository;
             _awardsRepository = awardsRepository;
             _cultureRepository = cultureRepository;
-            _blogCategoryRepository = blogCategoryRepository;
+            _postsRepository = postsRepository;
             _mapper = mapper;
             _ServicesRepository = servicesRepository;
         }
@@ -201,7 +202,7 @@ namespace Centroware.Service.Services
             var data = await _mainSettingRepository.FindFirst(x => x.Id > 0);
             return _mapper.Map<MainSetting, MainSettingsVm>(data);
         }
-        
+
         public async Task<List<ServiceVm>> GetServices()
         {
             return await _ServicesRepository.Filter(filter: x => x.Id > 0, 0, 5, orderBy: x => x.OrderByDescending(x => x.Id)).Select(x => new ServiceVm
@@ -219,16 +220,9 @@ namespace Centroware.Service.Services
                 return null;
             }
             var works = await _workRepository.Filter(x => x.CategoryId == work.CategoryId && x.Id != id, 0, 3, orderBy: x => x.OrderByDescending(x => x.Id)).ToListAsync();
-
-
-
             var dataVm = _mapper.Map<WorkVm>(work);
             var worksVm = _mapper.Map<List<WorkVm>>(works);
-            return new WorkRelated
-            {
-                Work = dataVm,
-                Works = worksVm
-            };
+            return new WorkRelated { Work = dataVm, Works = worksVm };
         }
         public async Task<WorksVm> GetWorksPage()
         {
@@ -243,31 +237,32 @@ namespace Centroware.Service.Services
                     Category = x.Category.Name,
                     CategoryId = x.CategoryId
                 }).ToListAsync();
-           
+
             return new WorksVm { Works = works };
         }
 
-        public Task<WorksVm> GetBlogPage()
+        public async Task<BlogVm> GetBlogs()
         {
-            throw new System.NotImplementedException();
+            var about = await _aboutSettingRepository.FindFirst(x => x.Id > 0);
+            var mapAbout = _mapper.Map<AboutSetting, AboutSettingVm>(about);
+            var posts = await _postsRepository.Filter(filter: x => x.Id > 0,
+               orderBy: x => x.OrderByDescending(x => x.Id)).Select(x => new PostsVm
+               {
+                   Id = x.Id,
+                   Title = x.Title,
+                   Description = x.Description,
+                   CreatedAt = x.CreatedAt.ToString("dd/MM/yyyy"),
+                   Image = x.Image
+               }).ToListAsync();
+
+            return new BlogVm { Posts = posts, About = mapAbout };
         }
 
-       
-
-        //public async Task<BlogCategoryVm> GetBlogCategory()
-        //{
-
-        //    var works = await _blogCategoryRepository.Filter(filter: x => x.Id > 0,
-        //        orderBy: x => x.OrderByDescending(x => x.Id),
-        //        include: x => x.Include(x => x.Category)).Select(x => new WorkVm
-        //        {
-        //            Id = x.Id,
-        //            Title = x.Title,
-        //            SubTitle = x.SubTitle,
-        //            MainImage = x.MainImage,
-        //            Category = x.Category.Name,
-        //            CategoryId = x.CategoryId
-        //        }).ToListAsync();
-        //}
+        public async Task<PostsVm> GetBlog(int id)
+        {
+            var about = await _postsRepository.FindFirst(x => x.Id == id);
+            var mapPost = _mapper.Map<Posts, PostsVm>(about);
+            return mapPost;
+        }
     }
 }
