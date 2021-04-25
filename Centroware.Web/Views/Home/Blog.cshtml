@@ -4,13 +4,13 @@
 <section class="menu-bg"></section>
 <section class="header-space"></section>
 <section class='work-header show-gradient b-lazy'
-         data-src="https://www.uxpert.com/wp-content/uploads/2020/06/herogradient.jpg">
+         data-src="@Model.Image">
     <div class="in">
         <div class="table">
             <div class="table-cell">
-                <h1>is simply dummy text of the printing and typesetting industry.</h1>
+                <h1>@Model.Title</h1>
 
-                <p style="font-size: .6rem;font-weight: bold;">PRODUCT - July 24, 2021</p>
+                <p style="font-size: .6rem;font-weight: bold;">@Model.CreatedAt</p>
             </div>
         </div>
     </div>
@@ -18,42 +18,18 @@
 <div id='toScroll'></div>
 <section class="grid-three  wow animate__fadeInUp" data-wow-duration="1s"
          style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
-    <div class="in">
-        <div class="table top">
-            <div class="table-cell title">Great product design starts with getting to know your users</div>
-            <div class="table-cell description">
-                <p>
-                    So, we began at their locations, watching them work, listening to their phone orders, and
-                    learning their process. Of course, we also tried our fair share of their products…
-                </p>
-            </div>
-        </div>
-    </div>
+    
 </section>
 <section class="work-about" style="    padding-top: 0; !important">
     <div class="in">
         <ul class="list">
             <li>
-                <div class="title">about</div>
+                <div class="title"></div>
                 <div class="desc">
                     <p class="p1">
-                        Buying a gift for a friend can be stressful. Buying a digital gift card
-                        effectively takes away the stress and injects a whole lot of fun into the process.<br>
-                        That is what we set out to do in designing and developing MAX’s responsive digital gift card
-                        website.
+                       @Model.Description
                     </p>
-                    <p class="p1">
-                        Buying a gift for a friend can be stressful. Buying a digital gift card
-                        effectively takes away the stress and injects a whole lot of fun into the process.<br>
-                        That is what we set out to do in designing and developing MAX’s responsive digital gift card
-                        website.
-                    </p>
-                    <p class="p1">
-                        Buying a gift for a friend can be stressful. Buying a digital gift card
-                        effectively takes away the stress and injects a whole lot of fun into the process.<br>
-                        That is what we set out to do in designing and developing MAX’s responsive digital gift card
-                        website.
-                    </p>
+                  
                 </div>
                 <div class="title" style="margin-top: 2rem;">about</div>
                 <a href="#" rel="nofollow" class="read-more hide-in-desctop" aria-label=""><span></span></a>
