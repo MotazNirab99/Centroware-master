@@ -81,8 +81,8 @@ namespace Centroware.Service.Services
                     Image = x.Image,
                    Title = x.Title,
                    Description = x.Description,
-                   CreatedAt = x.CreatedAt
-                   
+                   CreatedAt = x.CreatedAt.ToString("dd/MM/yyyy"),
+
                 }).ToListAsync();
                 var response = new ResponseDto
                 {
